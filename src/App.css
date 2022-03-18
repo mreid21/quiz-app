@@ -41,13 +41,13 @@
   margin-bottom: 1rem;
 }
 
-.quiz-box__answers {
+.quiz-box__answer {
   display: grid;
   gap: 1rem;
   width: 100%;
 }
 
-.quiz-box__choice {
+.answer__content {
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -56,7 +56,7 @@
   background-color: var(--accent);
 }
 
-.quiz-box__choice:hover {
+.answer__content:hover {
   background-color: var(--accent-light);
 }
 
