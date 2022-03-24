@@ -1,41 +1,38 @@
 import "./App.css";
+import { useState } from "react";
+import questions from "./static/questions";
+import QuizBox from "./components/QuizBox";
 
 function App() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [hasQuestions, setHasQuestions] = useState(true);
+  const [score, setScore] = useState(0);
+
+  const answerQuestion = (wasCorrect) => {
+    if (wasCorrect) {
+      setScore(score + 1);
+    }
+
+    if (currentIndex < questions.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      setHasQuestions(false);
+    }
+  };
+
   return (
     <div className="app-container">
-      <div className="quiz-box">
-        <p className="quiz-box__question">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis
-          velit qui numquam delectus atque culpa eaque accusamus, rem quisquam
-          beatae!
-        </p>
-        <section id="answers">
-          <div className="quiz-box__answer rounded-corners transition t-ease t-duration-short">
-            <div className="quiz-box__answer__letter">
-              <span>A</span>
-            </div>
-            <p>Lorem ipsum dolor sit amet.</p>
-          </div>
-          <div className="quiz-box__answer rounded-corners transition t-ease t-duration-short">
-            <div className="quiz-box__answer__letter">
-              <span>B</span>
-            </div>
-            <p>Lorem ipsum dolor sit amet.</p>
-          </div>
-          <div className="quiz-box__answer rounded-corners transition t-ease t-duration-short">
-            <div className="quiz-box__answer__letter">
-              <span>C</span>
-            </div>
-            <p>Lorem ipsum dolor sit amet.</p>
-          </div>
-          <div className="quiz-box__answer rounded-corners transition t-ease t-duration-short">
-            <div className="quiz-box__answer__letter">
-              <span>D</span>
-            </div>
-            <p>Lorem ipsum dolor sit amet.</p>
-          </div>
-        </section>
-      </div>
+      {hasQuestions ? (
+        <QuizBox
+          question={questions[currentIndex].question}
+          answers={questions[currentIndex].answers}
+          answerQuestion={answerQuestion}
+        />
+      ) : (
+        <div>
+          <h1>{`You scored ${score} out of ${questions.length}`}</h1>
+        </div>
+      )}
     </div>
   );
 }
