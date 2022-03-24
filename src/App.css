@@ -10,6 +10,14 @@
   background-color: var(--bg-dark);
 }
 
+.score-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
 .quiz-box {
   display: flex;
   flex-direction: column;
@@ -71,12 +79,12 @@
 
 .btn {
   display: inline-block;
-  padding: 1.5rem 2rem;
+  padding: 1rem 1.25rem;
   appearance: none;
   outline: none;
   border: none;
   background-color: var(--accent);
-  font-size: 2em;
+  font-size: 1em;
   text-transform: uppercase;
   cursor: pointer;
 }

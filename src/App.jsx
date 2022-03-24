@@ -12,13 +12,18 @@ function App() {
     if (wasCorrect) {
       setScore(score + 1);
     }
-
-    if (currentIndex < questions.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    } else {
-      setHasQuestions(false);
+    if(currentIndex < questions.length - 1){
+      setCurrentIndex(currentIndex + 1)
     }
+    else setHasQuestions(false)
   };
+
+
+  const resetGame = () => {
+    setCurrentIndex(0)
+    setScore(0)
+    setHasQuestions(true)
+  }
 
   return (
     <div className="app-container">
@@ -29,8 +34,9 @@ function App() {
           answerQuestion={answerQuestion}
         />
       ) : (
-        <div>
+        <div className="score-container">
           <h1>{`You scored ${score} out of ${questions.length}`}</h1>
+          <button onClick={resetGame} className="btn">Retry</button>
         </div>
       )}
     </div>
