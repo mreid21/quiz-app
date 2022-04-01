@@ -43,8 +43,7 @@
 .quiz-box__answer__letter {
   display: grid;
   place-items: center;
-  width: 2rem;
-  height: 2rem;
+  padding: 0.25rem 0.6rem;
   border-radius: 50%;
   background-color: var(--accent-light);
 }
